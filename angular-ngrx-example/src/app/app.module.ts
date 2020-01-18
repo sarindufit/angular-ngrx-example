@@ -1,3 +1,4 @@
+import { CreateCourseComponent } from './course/component/create-course/create-course.component';
 import { CourseResolver } from './course/course.resolver';
 import { CoursesListComponent } from './course/component/courses-list/courses-list.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,6 +21,7 @@ const routes = [
       courses: CourseResolver
     }
   },
+  {path: 'create-course', component: CreateCourseComponent},
   {path: '**', redirectTo: 'courses'}
 ];
 

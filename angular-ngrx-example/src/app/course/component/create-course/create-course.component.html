@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit(createForm)" #createForm="ngForm">
+  <div class="form-group">
+    <label for="name">Course Name</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      ngModel
+      required
+      style="width: 400px"/>
+  </div>
+  <div class="form-group">
+    <label for="side">Description</label>
+    <input
+      type="text"
+      id="description"
+      name="description"
+      class="form-control"
+      ngModel
+      required
+      style="width: 400px"/>
+  </div>
+  <button [disabled]="createForm.invalid" class="btn btn-primary" type="submit">Create</button>
+</form>

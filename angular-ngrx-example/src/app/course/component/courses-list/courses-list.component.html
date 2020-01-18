@@ -1,21 +1,50 @@
 <div>
   <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Description</th>
-          <th scope="col">Operations</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let course of courses$ | async">
-          <td>{{ course.name }}</td>
-          <td>{{ course.description }}</td>
-          <td>
-            <button class="btn btn-primary" style="margin: 5px">Update</button>
-            <button class="btn btn-danger" style="margin: 5px">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Operations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses$ | async">
+        <td>{{ course.name }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <button (click)="showUpdateForm(course)" class="btn btn-primary" style="margin: 5px">Update</button>
+          <button (click)="deleteCourse(course.id)" class="btn btn-danger" style="margin: 5px">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px;">
+    <h4>Update Course</h4>
+    <form (ngSubmit)="updateCourse(updateForm)" #updateForm="ngForm">
+      <div class="form-group">
+        <label for="name">Course Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-control"
+          required
+          [(ngModel)]="courseToBeUpdated.name"
+          style="width: 400px"/>
+      </div>
+      <div class="form-group">
+        <label for="side">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          class="form-control"
+          required
+          [(ngModel)]="courseToBeUpdated.description"
+          style="width: 400px"/>
+      </div>
+      <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit">Update</button>
+    </form>
+  </div>
 </div>
