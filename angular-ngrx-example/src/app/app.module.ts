@@ -28,15 +28,15 @@ const routes = [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
-    CourseModule,
     HttpClientModule,
+    BrowserModule,
     RouterModule.forRoot(routes),
     EffectsModule.forRoot([]),
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
     StoreDevtoolsModule.instrument({maxAge: 25}),
+    CourseModule,
   ],
   providers: [CourseResolver],
   bootstrap: [AppComponent]
