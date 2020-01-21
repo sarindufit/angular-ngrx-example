@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { CourseEffects } from './store/course.effects';
 import { CourseService } from './services/course.service';
 import { CommonModule } from '@angular/common';
@@ -20,8 +19,7 @@ import { CreateCourseComponent } from './component/create-course/create-course.c
     CommonModule,
     FormsModule,
     StoreModule.forFeature('courses', courseReducer),
-    EffectsModule.forFeature([CourseEffects]),
-    RouterModule
+    EffectsModule.forFeature([CourseEffects])
   ],
   providers: [CourseService],
   bootstrap: [],
